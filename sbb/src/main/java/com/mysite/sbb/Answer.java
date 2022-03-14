@@ -18,18 +18,18 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Answer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @Column(columnDefinition = "TEXT")
-    private String content;
+	@Column(columnDefinition = "TEXT")
+	private String content;
 
-    private LocalDateTime createDate;
+	private LocalDateTime createDate;
 
-    @ManyToOne
-    private Question question;
-    
-    @OneToMany(mappedBy = "question")
-    private List<Answer> answerList;
+	@ManyToOne
+	private Question question;
+
+	@OneToMany(mappedBy = "question")
+	private List<Answer> answerList;
 }
