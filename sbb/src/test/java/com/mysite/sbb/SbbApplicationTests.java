@@ -19,8 +19,6 @@ class SbbApplicationTests {
     @Autowired
     private QuestionRepository questionRepository;
     
-    @Autowired
-    private AnswerRepository answerRepository;
 
     @Test
     @Transactional
