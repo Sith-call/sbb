@@ -28,7 +28,7 @@ public class Question {
 	private String content;
 
 	private LocalDateTime createDate;
-	
+
 	@OneToMany(mappedBy = "question")
-    private List<Answer> answerList;
+	private List<Answer> answerList;
 }
