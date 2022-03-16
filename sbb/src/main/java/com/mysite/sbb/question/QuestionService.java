@@ -1,10 +1,15 @@
 package com.mysite.sbb.question;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,10 +18,13 @@ public class QuestionService {
 	@Autowired
     private QuestionRepository questionRepository;
 	
-	public List<Question> getList() {
-		List<Question> questionList = this.questionRepository.findAll();
-		return questionList;
-	}
+	public Page<Question> getList(int page) {
+		List<Sort.Order> sorts= new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+        Page<Question> questionList = this.questionRepository.findAll(pageable);
+        return questionList;
+    }
 	
 	public Optional<Question> getQuestion(Integer id) {  
         return this.questionRepository.findById(id);  
