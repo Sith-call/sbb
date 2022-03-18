@@ -1,5 +1,7 @@
 package com.mysite.sbb.user;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,4 +22,8 @@ public class UserService {
 		user.setPassword(passwordEncoder.encode(password));
 		return this.userRepository.save(user);
 	}
+	
+	public Optional<SiteUser> getUser(String username) {
+        return this.userRepository.findByusername(username);
+    }
 }

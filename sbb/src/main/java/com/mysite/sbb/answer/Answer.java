@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.mysite.sbb.question.Question;
+import com.mysite.sbb.user.SiteUser;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -34,4 +35,7 @@ public class Answer {
 
 	@OneToMany(mappedBy = "question")
 	private List<Answer> answerList;
+	
+	@ManyToOne
+    private SiteUser author;
 }
