@@ -1,6 +1,7 @@
 package com.mysite.sbb.answer;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,20 @@ public class AnswerService {
 		a.setAuthor(user);
 		a = this.answerRepository.save(a);
 		return a;
+    }
+	
+	public Optional<Answer> getAnswer(Integer id) {
+        return this.answerRepository.findById(id);
+    }
+
+    public Answer modify(Answer a, String content) {
+        a.setContent(content);
+        a.setModifyDate(LocalDateTime.now());
+        a = this.answerRepository.save(a);
+        return a;
+    }
+    
+    public void delete(Answer a) {
+        this.answerRepository.delete(a);
     }
 }
