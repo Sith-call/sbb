@@ -23,6 +23,9 @@ import com.mysite.sbb.answer.AnswerForm;
 import com.mysite.sbb.user.SiteUser;
 import com.mysite.sbb.user.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("/question")
 public class QuestionController {
@@ -36,6 +39,7 @@ public class QuestionController {
 	@RequestMapping("/list")
 	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page,
 			@RequestParam(value = "kw", defaultValue = "") String kw) {
+		log.info("page:{}, kw:{}", page, kw);
 		Page<Question> paging = this.questionService.getList(page, kw);
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
