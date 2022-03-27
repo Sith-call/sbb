@@ -31,6 +31,6 @@ public class Question {
 
 	private LocalDateTime createDate;
 	
-	@OneToMany(mappedBy = "question")
+	@OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Answer> answerList;
 }
